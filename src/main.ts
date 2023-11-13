@@ -17,6 +17,14 @@ function adatMegjelenites(lista: Product[]) {
 }
 
 function mind(){
+  fetch('products.json').then(eredmeny =>{
+    if(!eredmeny.ok){
+      throw new Error('Hiba')
+    }
+    return eredmeny.json();
+  }).then((tartalom: AllProducts) => {
+    adatMegjelenites(tartalom.products);
+  });
 
 }
 
